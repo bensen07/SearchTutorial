@@ -1,6 +1,8 @@
 package org.benz.tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import org.benz.common.TreeNode;
@@ -149,6 +151,19 @@ public class Tree {
 
 	}
 
+	public int minHeightOfTree(TreeNode node) {
+
+		if (node == null) {
+			return 0;
+		}
+		return 1 + Math.min(minHeightOfTree(node.getLeft()), minHeightOfTree(node.getRight()));
+	}
+
+	public boolean isBalancedTree(TreeNode root) {
+
+		return (heightOfTree(root) - minHeightOfTree(root) <= 1);
+	}
+
 	public int numberOfNodes(TreeNode node) {
 
 		if (node == null) {
@@ -217,5 +232,102 @@ public class Tree {
 		}
 		return;
 
+	}
+
+	TreeNode convertArrayToTree(int[] arr, int start, int end) {
+		if (end < start)
+			return null;
+
+		int middle = (start + end) / 2;
+		System.out.println("Middle " + middle + " Val:" + arr[middle]);
+		TreeNode node = new TreeNode("", arr[middle]);
+		node.setLeft(convertArrayToTree(arr, start, middle - 1));
+		node.setRight(convertArrayToTree(arr, middle + 1, end));
+		return node;
+
+	}
+
+	List<LinkedList<TreeNode>> findLevelLinkList(TreeNode head) {
+		if (null == head) {
+			return null;
+		}
+		int level = 0;
+
+		List<LinkedList<TreeNode>> result = new ArrayList<LinkedList<TreeNode>>();
+
+		LinkedList<TreeNode> list = new LinkedList<TreeNode>();
+		list.add(head);
+
+		result.add(level, list);
+		while (true) {
+			list = new LinkedList<TreeNode>();
+			for (int i = 0; i < result.get(level).size(); i++) {
+				TreeNode n = result.get(level).get(i);
+				if (n != null) {
+
+					if (n.getLeft() != null) {
+						list.add(n.getLeft());
+					}
+					if (n.getRight() != null) {
+						list.add(n.getRight());
+					}
+
+				}
+
+			}
+			if (list.size() > 0) {
+				result.add(list);
+			} else {
+				break;
+			}
+			level++;
+		}
+
+		return result;
+
+	}
+
+	// public TreeNode inorderSucc(TreeNode node) {
+	//
+	// if (node.parent == null || node.getRight() != null) {
+	// TreeNode n = node.getRight();
+	// while (n.getLeft() != null) {
+	// n = n.getLeft();
+	// }
+	// return n;
+	// }else {
+	// while(TreeNode p = node.parent !=null) {
+	// if(p.getLeft() == node) {
+	// break;
+	// }
+	// node = p;
+	// }
+	// }
+	// return p;
+	//
+	// }
+
+	private boolean covers(TreeNode root, TreeNode p) {
+		if (null == root) {
+			return false;
+		}
+		if (root == p) {
+			return true;
+		}
+
+		return covers(root.getLeft(), p) || covers(root.getRight(), p);
+	}
+
+	public TreeNode commonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+		if (root == null) {
+			return null;
+		}
+		if (covers(root.getLeft(), p) && covers(root.getLeft(), q)) {
+			return commonAncestor(root.getLeft(), p, q);
+		}
+		if (covers(root.getRight(), p) && covers(root.getRight(), q)) {
+			return commonAncestor(root.getRight(), p, q);
+		}
+		return root;
 	}
 }

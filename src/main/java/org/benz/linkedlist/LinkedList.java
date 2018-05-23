@@ -57,7 +57,7 @@ public class LinkedList {
 			}
 		}
 	}
-	
+
 	public void printLinkedList(Node start) {
 		if (null != start) {
 			Node node = start;
@@ -117,6 +117,60 @@ public class LinkedList {
 			head.setNext(null);
 		}
 		return next;
+
+	}
+
+	public void deleteDup(Node head) {
+		if (head == null) {
+			return;
+		}
+		Node prev = head;
+		Node curr = head.getNext();
+
+		while (curr != null) {
+			Node runner = head;
+
+			while (!runner.equals(curr)) {
+
+				if (runner.getKey() == curr.getKey()) {
+					Node tmp = curr.getNext();
+					prev.setNext(tmp);
+					curr = tmp;
+					break;
+				}
+				runner = runner.getNext();
+			}
+			if (runner.equals(curr)) {
+				prev = curr;
+				curr = curr.getNext();
+			}
+
+		}
+	}
+
+	public Node addLists(Node l1, Node l2, int carry) {
+		if (l1 == null && l2 == null && carry==0) {
+
+			return null;
+		}
+		Node sum = new Node("Result", carry);
+
+		int value = carry;
+		if (l1 != null) {
+			value += l1.getKey();
+		}
+		if (l2 != null) {
+			value += l2.getKey();
+		}
+		System.out.println("Adding " + (l1 != null ? l1.getKey() : null) + "+" + (l2 != null ? l2.getKey() : null) + "="
+				+ value + "+Carry:" + carry);
+		sum.setKey(value % 10);
+
+		Node next = addLists(l1 == null ? null : l1.getNext(), l2 == null ? null : l2.getNext(), value >= 10 ? 1 : 0);
+
+		sum.setNext(next);
+		System.out.println("Returning Node " + sum.getKey() + "Next " + sum.getNext());
+		return sum;
 
 	}
 

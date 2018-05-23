@@ -51,4 +51,21 @@ public class Node {
 		this.prev = prev;
 	}
 
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (obj == null) {
+//			return false;
+//		}
+//		if (((Node) obj).getKey() == this.key && this.name.equalsIgnoreCase(((Node) obj).getName())) {
+//			return true;
+//		}
+//		return false;
+//	}
+//
+//	@Override
+//	public int hashCode() {
+//		int hashCode = 37 * this.key + 37 * this.getName().hashCode();
+//		return hashCode;
+//	}
+
 }

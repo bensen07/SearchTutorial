@@ -34,16 +34,29 @@ public class Traversal {
 		listA.insertFirst("", 20);
 
 		LinkedList listB = new LinkedList();
-		listB.insertFirst("", 22);
-		listB.insertFirst("", 22);
 		listB.insertFirst("", 11);
-		listB.insertFirst("", 22);
-		listB.insertFirst("", 22);
-		listB.insertFirst("", 22);
+		listB.insertFirst("", 11);
+		listB.insertFirst("", 11);
+		listB.insertFirst("", 11);
+		listB.insertFirst("", 11);
+		listB.insertFirst("", 11);
 
 		System.out.println("Delete Dup");
-		Node node = listB.deleteDuplicate(listB.getStart());
-		listB.printLinkedList(node);
+		listB.deleteDup(listB.getStart());
+		listB.printLinkedList(listB.getStart());
+
+		LinkedList listC = new LinkedList();
+		//listC.insertFirst("", 1);
+		listC.insertFirst("", 5);
+		listC.insertFirst("", 6);
+
+		LinkedList listD = new LinkedList();
+		listD.insertFirst("", 4);
+		listD.insertFirst("", 4);
+
+		Node sum = listD.addLists(listC.getStart(), listD.getStart(), 0);
+		System.out.println("SUM");
+		listC.printLinkedList(sum);
 
 		Node head = new Node("Root", 0);
 		Node n = null;

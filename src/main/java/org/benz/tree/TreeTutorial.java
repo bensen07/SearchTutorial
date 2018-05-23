@@ -25,13 +25,22 @@ public class TreeTutorial {
 
 		System.out.println("BFS");
 		tree.bfs(tree.getRoot());
-		
+
 		System.out.println("DFS");
 		tree.dfs(tree.getRoot());
 
 		System.out.println("print Number of Node Of Tree " + tree.numberOfNodes(tree.getRoot()));
 
 		System.out.println("print Height of Tree " + tree.heightOfTree(tree.getRoot()));
+
+		System.out.println("Print Min Height of Tree " + tree.minHeightOfTree(tree.getRoot()));
+
+		System.out.println("Is Balanced Tree " + tree.isBalancedTree(tree.getRoot()));
+
+		int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
+		TreeNode n = tree.convertArrayToTree(arr, 0, arr.length - 1);
+		System.out.println("Array to Tree");
+		tree.printList(tree.convertToDoubleLinkedList(n));
 
 		System.out.println("Convert To Double Linked List");
 		TreeNode node = tree.convertToDoubleLinkedList(tree.getRoot());
