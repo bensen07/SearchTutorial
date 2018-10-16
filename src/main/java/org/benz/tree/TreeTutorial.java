@@ -31,7 +31,7 @@ public class TreeTutorial {
 
 		System.out.println("print Number of Node Of Tree " + tree.numberOfNodes(tree.getRoot()));
 
-		System.out.println("print Height of Tree " + tree.heightOfTree(tree.getRoot()));
+		System.out.println("print Height of Tree " + tree.maxHeightOfTree(tree.getRoot()));
 
 		System.out.println("Print Min Height of Tree " + tree.minHeightOfTree(tree.getRoot()));
 

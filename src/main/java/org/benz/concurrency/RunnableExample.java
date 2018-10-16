@@ -6,9 +6,6 @@ import java.util.concurrent.TimeUnit;
 
 public class RunnableExample {
 
-	
-	
-	
 	public static void main(String[] args) {
 		ExecutorService exe = Executors.newFixedThreadPool(10);
 
@@ -27,9 +24,9 @@ public class RunnableExample {
 				}
 			});
 		}
-		
+
 		exe.shutdown();
-		
+
 		try {
 			exe.awaitTermination(60, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {

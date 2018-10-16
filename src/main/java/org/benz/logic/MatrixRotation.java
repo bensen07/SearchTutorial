@@ -8,7 +8,7 @@ public class MatrixRotation {
 		// transpose(arr);
 		// print(arr);
 		// reverseMatrix(arr);
-		// rotateMatrixInplace(arr);
+		//rotateMatrixInplace(arr);
 		rotate(arr, arr.length);
 		print(arr);
 	}
@@ -127,15 +127,19 @@ public class MatrixRotation {
 			for (int j = i; j < length - i; j++) {
 
 				// Coordinate 1
+				System.out.println("taking " + i + "" + j);
 				int p1 = matrix[i][j];
 
 				// Coordinate 2
+				System.out.println("taking " + j + "" + (length - i));
 				int p2 = matrix[j][length - i];
 
 				// Coordinate 3
+				System.out.println("taking " + (length - i) + "" + (length - j));
 				int p3 = matrix[length - i][length - j];
 
 				// Coordinate 4
+				System.out.println("taking " + (length - j) + "" + i);
 				int p4 = matrix[length - j][i];
 
 				// Swap values of 4 coordinates.

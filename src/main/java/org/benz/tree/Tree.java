@@ -142,12 +142,12 @@ public class Tree {
 
 	}
 
-	public int heightOfTree(TreeNode node) {
+	public int maxHeightOfTree(TreeNode node) {
 		if (node == null) {
 			return 0;
 		}
 
-		return 1 + Math.max(heightOfTree(node.getLeft()), heightOfTree(node.getRight()));
+		return 1 + Math.max(maxHeightOfTree(node.getLeft()), maxHeightOfTree(node.getRight()));
 
 	}
 
@@ -161,7 +161,7 @@ public class Tree {
 
 	public boolean isBalancedTree(TreeNode root) {
 
-		return (heightOfTree(root) - minHeightOfTree(root) <= 1);
+		return (maxHeightOfTree(root) - minHeightOfTree(root) <= 1);
 	}
 
 	public int numberOfNodes(TreeNode node) {
