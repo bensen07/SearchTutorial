@@ -10,11 +10,14 @@ public class HeapSortTest {
 		 */
 		for (int i = arr.length / 2; i >= 0; i--) {
 			maxHeapify(arr, arr.length, i);
+			
 		}
 
 		for (int i = arr.length - 1; i >= 0; i--) {
 			swap(arr, 0, i);
 			maxHeapify(arr, i, 0);
+			System.out.println();
+			printArr(arr);
 		}
 
 		System.out.println("Final Sorted");

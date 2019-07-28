@@ -2,6 +2,7 @@ package org.benz.logic;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Test {
@@ -9,10 +10,11 @@ public class Test {
 		x = 5;
 	}
 
-	static int x, y;
+	static int x =20, y;
 
 	public static void main(String[] args) {
-		System.out.println(5%9);
+		
+		System.out.println(x);
 	}
 
 	private static void test() {
